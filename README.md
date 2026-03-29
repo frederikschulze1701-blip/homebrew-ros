@@ -120,6 +120,7 @@ If you run into issues (e.g. missing libraries, Gazebo not finding plugins, or P
 export PATH="$(brew --prefix)/opt/ros2-kilted-gazebo-ionic/bin:$PATH"
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export KMP_DUPLICATE_LIB_OK=TRUE
+export DYLD_LIBRARY_PATH="$(brew --prefix)/opt/ros2-kilted-gazebo-ionic/lib:$DYLD_LIBRARY_PATH"
 export PYTHONUNBUFFERED=1
 ```
 
@@ -128,6 +129,7 @@ export PYTHONUNBUFFERED=1
 | `PATH` | Ensures Gazebo Ionic binaries are found |
 | `RMW_IMPLEMENTATION` | Uses CycloneDDS (most stable on macOS) |
 | `KMP_DUPLICATE_LIB_OK` | Prevents OpenMP duplicate library errors |
+| `DYLD_LIBRARY_PATH` | Helps macOS find shared libraries (e.g. Boost) |
 | `PYTHONUNBUFFERED` | Ensures Python output appears immediately in logs |
 
 ## Links
