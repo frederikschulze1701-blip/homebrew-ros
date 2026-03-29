@@ -112,6 +112,26 @@ All packages in this distribution have been patched and compiled for **macOS Seq
 - **PCL / OpenCV / Eigen** — perception libraries linked against macOS frameworks
 - **All Python bindings** — working with macOS system Python / Homebrew Python
 
+## Troubleshooting
+
+If you run into issues (e.g. missing libraries, Gazebo not finding plugins, or Python buffering problems), try adding these exports to your shell:
+
+```bash
+export PATH="$(brew --prefix)/opt/ros2-kilted-gazebo-ionic/bin:$PATH"
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export KMP_DUPLICATE_LIB_OK=TRUE
+export DYLD_LIBRARY_PATH="$(brew --prefix)/opt/ros2-kilted-gazebo-ionic/lib:$DYLD_LIBRARY_PATH"
+export PYTHONUNBUFFERED=1
+```
+
+| Variable | Purpose |
+|---|---|
+| `PATH` | Ensures Gazebo Ionic binaries are found |
+| `RMW_IMPLEMENTATION` | Uses CycloneDDS (most stable on macOS) |
+| `KMP_DUPLICATE_LIB_OK` | Prevents OpenMP duplicate library errors |
+| `DYLD_LIBRARY_PATH` | Helps macOS find shared libraries (e.g. Boost) |
+| `PYTHONUNBUFFERED` | Ensures Python output appears immediately in logs |
+
 ## Links
 
 - [ROS 2 Kilted Documentation](https://docs.ros.org/en/kilted/)
